@@ -3,299 +3,482 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fovey Alpha</title>
+    <title>Fovey - Design is easy to start and painful to finish.</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="stylesheet" href="./src/index.css" />
+    <script>
+      // Theme toggle logic
+      function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      }
+      
+      // Initialize theme
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
   </head>
-  <body>
-    <a class="skip-link" href="#about">Skip to content</a>
-
-    <header class="nav" id="top">
-      <div class="nav__inner">
-        <a class="brand" href="#top" aria-label="Fovey home">
-          <img class="brand__mark" src="/fovey_color.svg" alt="Fovey" />
-          <span class="badge" aria-label="Alpha">ALPHA</span>
+  <body class="min-h-screen flex flex-col selection:bg-orange-500/30">
+    
+    <!-- Navbar -->
+    <header class="w-full py-4 px-6 md:px-10 flex items-center justify-between sticky top-0 z-50 bg-app/80 backdrop-blur-xl border-b border-transparent dark:border-border/50 transition-all relative">
+      <div class="flex items-center gap-3">
+        <a href="#" aria-label="Fovey" class="flex items-center gap-2 group">
+          <img src="/fovey_color.svg" alt="Fovey" class="h-8 w-auto group-hover:rotate-12 transition-transform duration-500" />
         </a>
-        <nav class="nav__links" aria-label="Primary">
-          <a href="#about">About</a>
-          <a href="#features">Features</a>
-          <a href="#download">Download</a>
-          <a href="#faq">FAQ</a>
-          <a href="#social">Social</a>
-        </nav>
-        <div class="nav__cta">
-          <button class="btn btn--ghost" type="button" disabled>Join Updates</button>
-          <a class="btn btn--primary" href="#download">Download Alpha</a>
-        </div>
+        <span class="text-xs font-medium bg-orange-500/10 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 border border-orange-500/20 dark:border-orange-500/30 rounded-full px-2.5 py-0.5">Alpha</span>
+      </div>
+
+      <!-- Centered Pill Nav -->
+      <nav class="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-1 bg-surfaceAlt dark:bg-surface border border-border rounded-full px-1.5 py-1.5 shadow-sm">
+        <a href="#about" class="px-5 py-1.5 rounded-full bg-surface dark:bg-white/10 text-text text-sm font-medium shadow-sm transition-all">About</a>
+        <a href="#alpha" class="px-5 py-1.5 rounded-full text-muted hover:text-text hover:bg-surface/50 dark:hover:bg-white/5 text-sm font-medium transition-all">Alpha</a>
+        <a href="#download" class="px-5 py-1.5 rounded-full text-muted hover:text-text hover:bg-surface/50 dark:hover:bg-white/5 text-sm font-medium transition-all">Download</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-surfaceAlt text-muted hover:text-text transition-colors border border-transparent hover:border-border" aria-label="Toggle theme">
+          <!-- Moon Icon -->
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="block dark:hidden"><path d="M12.3 8.875C10.643 8.875 9.3 7.532 9.3 5.875C9.3 4.218 10.643 2.875 12.3 2.875C12.637 2.875 12.96 2.93 13.265 3.033C12.72 1.258 11.05 0 9.1 0C6.615 0 4.6 2.015 4.6 4.5C4.6 6.985 6.615 9 9.1 9C10.285 9 11.378 8.558 12.2 7.825C12.233 8.165 12.3 8.515 12.3 8.875Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          <!-- Sun Icon -->
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="hidden dark:block"><path d="M7.5 0C7.77614 0 8 0.223858 8 0.5V2.5C8 2.77614 7.77614 3 7.5 3C7.22386 3 7 2.77614 7 2.5V0.5C7 0.223858 7.22386 0 7.5 0ZM2.1967 2.1967C2.39196 2.00144 2.70854 2.00144 2.90381 2.1967L4.31802 3.61091C4.51328 3.80617 4.51328 4.12276 4.31802 4.31802C4.12276 4.51328 3.80617 4.51328 3.61091 4.31802L2.1967 2.90381C2.00144 2.70854 2.00144 2.39196 2.1967 2.1967ZM0.5 7C0.223858 7 0 7.22386 0 7.5C0 7.77614 0.223858 8 0.5 8H2.5C2.77614 8 3 7.77614 3 7.5C3 7.22386 2.77614 7 2.5 7H0.5ZM2.1967 12.8033C2.00144 12.608 2.00144 12.2915 2.1967 12.0962L3.61091 10.682C3.80617 10.4867 4.12276 10.4867 4.31802 10.682C4.51328 10.8772 4.51328 11.1938 4.31802 11.3891L2.90381 12.8033C2.70854 12.9986 2.39196 12.9986 2.1967 12.8033ZM12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8H14.5C14.7761 8 15 7.77614 15 7.5C15 7.22386 14.7761 7 14.5 7H12.5ZM10.682 4.31802C10.4867 4.12276 10.4867 3.80617 10.682 3.61091L12.0962 2.1967C12.2915 2.00144 12.608 2.00144 12.8033 2.1967C12.9986 2.39196 12.9986 2.70854 12.8033 2.90381L11.3891 4.31802C11.1938 4.51328 10.8772 4.51328 10.682 4.31802ZM8 12.5C8 12.2239 7.77614 12 7.5 12C7.22386 12 7 12.2239 7 12.5V14.5C7 14.7761 7.22386 15 7.5 15C7.77614 15 8 14.7761 8 14.5V12.5ZM10.682 10.682C10.8772 10.4867 11.1938 10.4867 11.3891 10.682L12.8033 12.0962C12.9986 12.2915 12.9986 12.608 12.8033 12.8033C12.608 12.9986 12.2915 12.9986 12.0962 12.8033L10.682 11.3891C10.4867 11.1938 10.4867 10.8772 10.682 10.682ZM5.5 7.5C5.5 6.39543 6.39543 5.5 7.5 5.5C8.60457 5.5 9.5 6.39543 9.5 7.5C9.5 8.60457 8.60457 9.5 7.5 9.5C6.39543 9.5 5.5 8.60457 5.5 7.5ZM7.5 4.5C5.84315 4.5 4.5 5.84315 4.5 7.5C4.5 9.15685 5.84315 10.5 7.5 10.5C9.15685 10.5 10.5 9.15685 10.5 7.5C10.5 5.84315 9.15685 4.5 7.5 4.5Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
       </div>
     </header>
 
-    <main>
-            <div class="parallax" aria-hidden="true"><img src="/paralax_background1.svg" alt="" /></div>
+    <main class="flex-grow w-full px-6 md:px-12 lg:px-16 max-w-5xl mx-auto">
+      
+      <!-- Hero -->
+      <section class="w-full text-center pt-20 pb-16 md:pt-32 md:pb-24">
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+          Design is easy to start and <span class="text-orange-500">painful</span> to <span class="text-purple-500">finish.</span>
+        </h1>
+        <p class="text-2xl md:text-3xl text-muted font-normal max-w-3xl mx-auto leading-relaxed mb-4">
+          Fovey exists to fix the finish.
+        </p>
+      </section>
 
-      <section class="hero" data-animate>
-        <div class="hero__grid">
-          <div class="hero__content">
-            <p class="eyebrow">Vector meets moodboard</p>
-            <h1>Design momentum for teams that ship.</h1>
-            <p class="lede">
-              Fovey is a focused canvas for vector tools and moodboard thinking. Lay out ideas, refine
-              geometry, and export without jumping between apps.
+      <!-- Intro -->
+      <section class="w-full mb-24 section-divider pt-12">
+        <div class="section-content">
+          <p class="text-lg md:text-xl text-text leading-relaxed mb-6">
+            Fovey is a modern vector design tool built for designers who care about what happens after the artboard. Not just how things look, but how work is reviewed, handed off, and actually used in the real world.
+          </p>
+          <p class="text-lg md:text-xl text-text leading-relaxed font-medium">
+            We are building Fovey for people who design with intent, not just aesthetics.
+          </p>
+        </div>
+      </section>
+
+      <!-- Who We Are -->
+      <section id="about" class="w-full mb-24 section-divider pt-12">
+        <h2 class="section-heading">Who We Are</h2>
+        <div class="prose prose-lg dark:prose-invert max-w-none space-y-6">
+          <p class="text-base md:text-lg text-text leading-relaxed mb-4">
+            Fovey is an independent design platform built by designers and developers who have lived inside the cracks of existing tools.
+          </p>
+          <p class="text-base md:text-lg text-text leading-relaxed mb-4">
+            We have shipped work to clients.<br>
+            We have handed off files that came back broken.<br>
+            We have watched beautiful designs fall apart at the moment of delivery.
+          </p>
+          <p class="text-base md:text-lg text-text leading-relaxed mb-4">
+            Fovey is the product of that frustration.
+          </p>
+          <p class="text-base md:text-lg text-text leading-relaxed font-medium">
+            This is not a clone of existing vector apps. It is a rethink of how design ownership, structure, and delivery should work from day one.
+          </p>
+        </div>
+      </section>
+
+      <!-- The Gap Fovey Fills -->
+      <section class="w-full mb-24 section-divider pt-12">
+        <h2 class="section-heading">The Gap Fovey Fills</h2>
+        <div class="prose prose-lg dark:prose-invert max-w-none space-y-6">
+          <p class="text-base md:text-lg text-text leading-relaxed">
+            Most design tools stop caring the moment the pixels are placed.
+          </p>
+          <p class="text-base md:text-lg text-text leading-relaxed">
+            They are excellent at creation and vague at everything else.
+          </p>
+          <p class="text-base md:text-lg text-text leading-relaxed font-medium">
+            Fovey focuses on what other tools treat as an afterthought:
+          </p>
+          <div class="section-content mt-6">
+            <ul class="list-none space-y-4">
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Structured brand handoff, not scattered files</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Clear ownership of assets, not hidden dependencies</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Review and packaging built into the design process</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">A path from canvas to client without chaos</span>
+              </li>
+            </ul>
+          </div>
+          <p class="text-base md:text-lg text-text leading-relaxed mb-4">
+            Instead of asking designers to explain their work after exporting, Fovey helps designers ship work that explains itself.
+          </p>
+          <p class="text-base md:text-lg text-text leading-relaxed font-medium">
+            This is where Fovey is different.<br>
+            It is not just another canvas.<br>
+            It is a delivery system for design intent.
+          </p>
+        </div>
+      </section>
+
+      <!-- What's Included in the Alpha -->
+      <section id="alpha" class="w-full mb-24 section-divider pt-12">
+        <h2 class="section-heading">What's Included in the Alpha</h2>
+        <div class="prose prose-lg dark:prose-invert max-w-none space-y-6">
+          <p class="text-base md:text-lg text-text leading-relaxed">
+            The alpha is focused, opinionated, and intentionally incomplete.
+          </p>
+          <p class="text-base md:text-lg text-text leading-relaxed font-medium">
+            You will have access to:
+          </p>
+          <div class="section-content">
+            <ul class="list-none space-y-4 mb-6">
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">A fully functional vector canvas</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Shapes, paths, text, and direct selection tools</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Google Fonts integration with live previews</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Asset uploading and reuse</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Frames for organizing work and exports</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">SVG, PNG, and JPEG export</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Brand-ready structure, not loose artboards</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">A fast local file system with no account required</span>
+              </li>
+            </ul>
+          </div>
+          <p class="text-base md:text-lg text-text leading-relaxed font-medium mt-8">
+            What you will not have yet:
+          </p>
+          <div class="section-content bg-surfaceAlt/30 dark:bg-white/5 border-dashed">
+            <ul class="list-none space-y-3">
+              <li class="flex items-start gap-4">
+                <span class="text-muted font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-muted">Collaboration</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-muted font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-muted">Cloud sync</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-muted font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-muted">Advanced effects and filters</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-muted font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-muted">Accounts or publishing workflows</span>
+              </li>
+            </ul>
+          </div>
+          <p class="text-base md:text-lg text-text leading-relaxed mt-6">
+            This alpha is about proving the core loop works. Creation, structure, export, and handoff.
+          </p>
+        </div>
+      </section>
+
+      <!-- What We Expect From Alpha Users -->
+      <section class="w-full mb-24 section-divider pt-12">
+        <h2 class="section-heading">What We Expect From Alpha Users</h2>
+        <div class="prose prose-lg dark:prose-invert max-w-none space-y-6">
+          <p class="text-base md:text-lg text-text leading-relaxed font-medium">
+            Alpha access is not early access for spectators.
+          </p>
+          <p class="text-base md:text-lg text-text leading-relaxed">
+            We expect:
+          </p>
+          <div class="section-content">
+            <ul class="list-none space-y-4">
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Real usage, not just curiosity installs</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Honest feedback, including when something feels wrong</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Bug reports with context, not vibes</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Willingness to tolerate rough edges</span>
+              </li>
+            </ul>
+          </div>
+          <p class="text-base md:text-lg text-text leading-relaxed mb-4">
+            You are helping shape the product. That means breaking it, questioning decisions, and pushing it into real workflows.
+          </p>
+          <p class="text-base md:text-lg text-text leading-relaxed">
+            If you want polished marketing demos, wait for beta.<br>
+            If you want influence, alpha is for you.
+          </p>
+        </div>
+      </section>
+
+      <!-- Pricing During Alpha -->
+      <section class="w-full mb-24 section-divider pt-12">
+        <h2 class="section-heading">Pricing During Alpha</h2>
+        <div class="section-content">
+          <div class="prose prose-lg dark:prose-invert max-w-none space-y-4">
+          <p class="text-base md:text-lg text-text leading-relaxed mb-4 font-medium">
+            The alpha is free.
+          </p>
+          <p class="text-base md:text-lg text-text leading-relaxed mb-4">
+            Early testers will receive lifetime benefits when Fovey exits beta. Exact details will be announced before public launch.
+          </p>
+            <p class="text-base md:text-lg text-text leading-relaxed">
+              We value time and feedback more than subscriptions right now.
             </p>
-            <div class="hero__cta">
-              <a class="btn btn--primary" href="#download">Download Alpha</a>
-              <a class="btn btn--secondary" href="#features">View Roadmap</a>
-            </div>
-            <div class="hero__meta">
-              <span>Fast, local-first.</span>
-              <span>Keyboard driven.</span>
-              <span>Designed for clarity.</span>
-            </div>
           </div>
-          <div class="hero__preview" aria-label="Fovey preview" data-animate>
-            <div class="preview__glow"></div>
-            <div class="preview__chrome">
-              <span></span><span></span><span></span>
+        </div>
+      </section>
+
+      <!-- Downloads -->
+      <section id="download" class="w-full mb-24 section-divider pt-12">
+        <h2 class="section-heading mb-8">Downloads</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <!-- Windows Card -->
+          <div class="card-theme">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-bold mb-2">Windows</h3>
+                <p class="text-sm text-muted">Download the Windows alpha build as a zip file.</p>
+              </div>
+              <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3.25C1 3.11193 1.11193 3 1.25 3H13.75C13.8881 3 14 3.11193 14 3.25V10.75C14 10.8881 13.8881 11 13.75 11H1.25C1.11193 11 1 10.8881 1 10.75V3.25ZM1.25 2C0.559643 2 0 2.55964 0 3.25V10.75C0 11.4404 0.559644 12 1.25 12H5.07341L4.82991 13.2986C4.76645 13.6371 5.02612 13.95 5.37049 13.95H9.62951C9.97389 13.95 10.2336 13.6371 10.1701 13.2986L9.92659 12H13.75C14.4404 12 15 11.4404 15 10.75V3.25C15 2.55964 14.4404 2 13.75 2H1.25ZM9.01091 12H5.98909L5.79222 13.05H9.20778L9.01091 12Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+              </div>
             </div>
-            <div class="preview__body">
-              <div class="preview__rail">
-                <div class="tool"></div>
-                <div class="tool is-active"></div>
-                <div class="tool"></div>
-                <div class="tool"></div>
+            <button class="btn-primary-theme w-full text-sm">Download for Windows</button>
+            <p class="text-xs text-muted mt-3">Both builds are unsigned during alpha.</p>
+          </div>
+
+          <!-- macOS Card -->
+          <div class="card-theme">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-bold mb-2">macOS</h3>
+                <p class="text-sm text-muted">Download the macOS alpha build as a zip file.</p>
               </div>
-              <div class="preview__canvas">
-                <div class="canvas__grid"></div>
-                <div class="canvas__card"></div>
-                <div class="canvas__card"></div>
-                <div class="canvas__shape"></div>
-                <div class="canvas__handle"></div>
+              <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3.25C1 3.11193 1.11193 3 1.25 3H13.75C13.8881 3 14 3.11193 14 3.25V10.75C14 10.8881 13.8881 11 13.75 11H1.25C1.11193 11 1 10.8881 1 10.75V3.25ZM1.25 2C0.559643 2 0 2.55964 0 3.25V10.75C0 11.4404 0.559644 12 1.25 12H5.07341L4.82991 13.2986C4.76645 13.6371 5.02612 13.95 5.37049 13.95H9.62951C9.97389 13.95 10.2336 13.6371 10.1701 13.2986L9.92659 12H13.75C14.4404 12 15 11.4404 15 10.75V3.25C15 2.55964 14.4404 2 13.75 2H1.25ZM9.01091 12H5.98909L5.79222 13.05H9.20778L9.01091 12Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
               </div>
-              <div class="preview__panel">
-                <div class="panel__row"></div>
-                <div class="panel__row"></div>
-                <div class="panel__row"></div>
+            </div>
+            <button class="btn-primary-theme w-full text-sm">Download for macOS</button>
+            <p class="text-xs text-muted mt-3">Both builds are unsigned during alpha.</p>
+          </div>
+        </div>
+
+        <!-- Installation Instructions -->
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">How to Install and Run Fovey</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Windows Instructions -->
+              <div>
+                <h4 class="text-xl font-bold mb-4">Windows Instructions</h4>
+                <ol class="list-none space-y-3">
+                  <li class="flex items-start gap-3">
+                    <span class="text-gradient-brand font-bold mt-1">1.</span>
+                    <span class="text-base text-text">Download the zip file</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-gradient-brand font-bold mt-1">2.</span>
+                    <span class="text-base text-text">Right-click the zip and select "Extract All"</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-gradient-brand font-bold mt-1">3.</span>
+                    <span class="text-base text-text">Open the extracted folder</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-gradient-brand font-bold mt-1">4.</span>
+                    <span class="text-base text-text">Double-click the Fovey application</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-gradient-brand font-bold mt-1">5.</span>
+                    <span class="text-base text-text">If Windows SmartScreen appears, click "More info" then "Run anyway"</span>
+                  </li>
+                </ol>
+                <p class="text-sm text-muted mt-4">
+                  Fovey runs locally on your machine. No installer required.
+                </p>
+              </div>
+
+              <!-- macOS Instructions -->
+              <div>
+                <h4 class="text-xl font-bold mb-4">macOS Instructions</h4>
+                <ol class="list-none space-y-3">
+                  <li class="flex items-start gap-3">
+                    <span class="text-gradient-brand font-bold mt-1">1.</span>
+                    <span class="text-base text-text">Download the zip file</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-gradient-brand font-bold mt-1">2.</span>
+                    <span class="text-base text-text">Double-click to extract it</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-gradient-brand font-bold mt-1">3.</span>
+                    <span class="text-base text-text">Drag the Fovey app into your Applications folder</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-gradient-brand font-bold mt-1">4.</span>
+                    <span class="text-base text-text">Right-click the app and select "Open"</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-gradient-brand font-bold mt-1">5.</span>
+                    <span class="text-base text-text">Confirm you want to open an unsigned application</span>
+                  </li>
+                </ol>
+                <p class="text-sm text-muted mt-4">
+                  macOS blocks unsigned apps by default. This is expected during alpha.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" id="features">
-        <div class="section__header" data-animate>
-          <h2>Features built for real work</h2>
-          <p>Lean, predictable, and intentionally fast for day-to-day vector and layout tasks.</p>
-        </div>
-        <div class="feature-row" data-animate>
-          <div class="feature-row__media">
-            <div class="skeleton"></div>
-          </div>
-          <div class="feature-row__content">
-            <span class="icon-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3" /></svg>
-            </span>
-            <h3>Infinite board + artboard export</h3>
-            <p>Map ideas on an open canvas while keeping export-ready artboards in reach.</p>
-            <button class="text-button" type="button">Learn more</button>
-          </div>
-        </div>
-        <div class="feature-row is-alt" data-animate>
-          <div class="feature-row__media">
-            <div class="skeleton"></div>
-          </div>
-          <div class="feature-row__content">
-            <span class="icon-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4-6 6 4 4-6" /></svg>
-            </span>
-            <h3>Vector tools that stay out of your way</h3>
-            <p>Pen, curvature, and direct selection tools that feel precise and consistent.</p>
-            <button class="text-button" type="button">Learn more</button>
-          </div>
-        </div>
-        <div class="feature-row" data-animate>
-          <div class="feature-row__media">
-            <div class="skeleton"></div>
-          </div>
-          <div class="feature-row__content">
-            <span class="icon-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6z" /></svg>
-            </span>
-            <h3>Layers and grouping you can trust</h3>
-            <p>Clear structure, fast selection, and grouping that keeps your intent intact.</p>
-            <button class="text-button" type="button">Learn more</button>
-          </div>
-        </div>
-        <div class="feature-row is-alt" data-animate>
-          <div class="feature-row__media">
-            <div class="skeleton"></div>
-          </div>
-          <div class="feature-row__content">
-            <span class="icon-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16" /></svg>
-            </span>
-            <h3>Snap, grid, and precision controls</h3>
-            <p>Confident alignment with smart snapping and clear numeric feedback.</p>
-            <button class="text-button" type="button">Learn more</button>
-          </div>
-        </div>
-        <div class="feature-row" data-animate>
-          <div class="feature-row__media">
-            <div class="skeleton"></div>
-          </div>
-          <div class="feature-row__content">
-            <span class="icon-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10M12 7v10" /></svg>
-            </span>
-            <h3>Fast workflows and shortcuts</h3>
-            <p>Designed around quick gestures, multi-select, and repeatable actions.</p>
-            <button class="text-button" type="button">Learn more</button>
+      <!-- Your Work Is Yours -->
+      <section class="w-full mb-24 section-divider pt-12">
+        <h2 class="section-heading">Your Work Is Yours</h2>
+        <div class="section-content">
+          <div class="prose prose-lg dark:prose-invert max-w-none space-y-6">
+            <p class="text-base md:text-lg text-text leading-relaxed font-medium">
+              Fovey does not claim ownership over your designs.
+            </p>
+            <ul class="list-none space-y-4">
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">All assets you create or import remain yours.</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Files are stored locally on your machine.</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">There is no account and no upload happening behind your back.</span>
+              </li>
+            </ul>
+            <p class="text-base md:text-lg text-text leading-relaxed mt-6">
+              When cloud features arrive, ownership will remain non-negotiable.
+            </p>
           </div>
         </div>
       </section>
 
-      <section class="section" id="about" data-animate>
-        <div class="section__header">
-          <h2>Why Fovey exists</h2>
-        </div>
-        <div class="about">
-          <p>
-            Fovey was built for makers who want the clarity of vector tools without the noise. It blends
-            a moodboard canvas with precise editing so concepting and execution stay in one place.
+      <!-- Where This Is Going -->
+      <section class="w-full mb-24 section-divider pt-12">
+        <h2 class="section-heading">Where This Is Going</h2>
+        <div class="prose prose-lg dark:prose-invert max-w-none space-y-6">
+          <p class="text-base md:text-lg text-text leading-relaxed">
+            Fovey is early. On purpose.
           </p>
-          <p>
-            The alpha is focused on speed, feedback, and workflows that feel native to creative thinking.
-            We want every action to feel predictable, fast, and purposeful.
+          <p class="text-base md:text-lg text-text leading-relaxed">
+            Upcoming phases will introduce:
           </p>
-          <ul>
-            <li>Lightweight and offline-first</li>
-            <li>Focused on real workflows</li>
-            <li>Fast interactions at any scale</li>
-          </ul>
+          <div class="section-content">
+            <ul class="list-none space-y-4">
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Brand review links</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Structured brand packages</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Collaboration and commenting</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Accounts and cloud sync</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="text-base md:text-lg text-text">Advanced layout and typography controls</span>
+              </li>
+            </ul>
+          </div>
+          <p class="text-base md:text-lg text-text leading-relaxed font-medium mt-6">
+            The goal is not to replace every design tool overnight.<br>
+            The goal is to become the tool designers trust when work actually leaves their hands.
+          </p>
         </div>
       </section>
 
-      <section class="section" id="download">
-        <div class="section__header" data-animate>
-          <h2>Alpha build</h2>
-          <p>Early access for collaborators and testers.</p>
-        </div>
-        <div class="download-card" data-animate>
-          <div class="download-card__header">
-            <h3>Fovey Alpha</h3>
-            <p>Alpha builds change fast. Expect rough edges.</p>
-          </div>
-          <div class="download-card__platforms">
-            <div class="platform">
-              <span>Windows</span>
-              <span class="platform__meta">x64</span>
-            </div>
-            <div class="platform">
-              <span>macOS</span>
-              <span class="platform__meta">Apple Silicon / Intel</span>
-            </div>
-            <div class="platform">
-              <span>Linux</span>
-              <span class="platform__meta">AppImage</span>
-            </div>
-          </div>
-          <button class="btn btn--primary" type="button" disabled>Coming soon</button>
-          <div class="checksum">
-            <span>Checksum</span>
-            <code>SHA256: --</code>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="faq">
-        <div class="section__header" data-animate>
-          <h2>FAQ</h2>
-        </div>
-        <div class="accordion" role="list">
-          <div class="accordion__item" role="listitem" data-animate>
-            <button class="accordion__trigger" type="button" aria-expanded="false">
-              What is Fovey?
-              <span class="accordion__icon" aria-hidden="true"></span>
-            </button>
-            <div class="accordion__panel" hidden>
-              Fovey is a vector-first moodboard workspace for building visual systems and quick exports.
-            </div>
-          </div>
-          <div class="accordion__item" role="listitem" data-animate>
-            <button class="accordion__trigger" type="button" aria-expanded="false">
-              Is it free during alpha?
-              <span class="accordion__icon" aria-hidden="true"></span>
-            </button>
-            <div class="accordion__panel" hidden>
-              Yes. The alpha is free while we refine performance, workflows, and exports.
-            </div>
-          </div>
-          <div class="accordion__item" role="listitem" data-animate>
-            <button class="accordion__trigger" type="button" aria-expanded="false">
-              What platforms are supported?
-              <span class="accordion__icon" aria-hidden="true"></span>
-            </button>
-            <div class="accordion__panel" hidden>
-              We are preparing Windows, macOS, and Linux builds. All will ship during alpha.
-            </div>
-          </div>
-          <div class="accordion__item" role="listitem" data-animate>
-            <button class="accordion__trigger" type="button" aria-expanded="false">
-              Where are files stored?
-              <span class="accordion__icon" aria-hidden="true"></span>
-            </button>
-            <div class="accordion__panel" hidden>
-              Everything stays on your machine by default. Cloud sync will be optional later.
-            </div>
-          </div>
-          <div class="accordion__item" role="listitem" data-animate>
-            <button class="accordion__trigger" type="button" aria-expanded="false">
-              How do I report bugs?
-              <span class="accordion__icon" aria-hidden="true"></span>
-            </button>
-            <div class="accordion__panel" hidden>
-              We will open a feedback channel in Discord and GitHub once the alpha invite list is live.
-            </div>
+      <!-- Final Note -->
+      <section class="w-full mb-24 section-divider pt-12">
+        <div class="card-theme">
+          <h2 class="section-heading mb-6">Final Note</h2>
+          <div class="prose prose-lg dark:prose-invert max-w-none space-y-6">
+            <p class="text-base md:text-lg text-text leading-relaxed">
+              This alpha exists because the best design tools are not built in isolation.
+            </p>
+            <p class="text-base md:text-lg text-text leading-relaxed">
+              If you are here, you are part of the foundation.<br>
+              Not a customer yet. A contributor.
+            </p>
+            <p class="text-base md:text-lg text-text leading-relaxed font-medium">
+              Build boldly. Break things. Tell the truth.
+            </p>
+            <p class="text-base md:text-lg text-text leading-relaxed">
+              Fovey will get better because of it.
+            </p>
           </div>
         </div>
       </section>
 
-      <section class="section" id="social">
-        <div class="section__header" data-animate>
-          <h2>Social</h2>
-          <p>Follow along as the alpha ships.</p>
-        </div>
-        <div class="social" data-animate>
-          <a class="social__link" href="#" aria-label="Fovey on X">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" /></svg>
-            X
-          </a>
-          <a class="social__link" href="#" aria-label="Fovey on YouTube">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v10H4z" /><path d="M10 9l5 3-5 3z" /></svg>
-            YouTube
-          </a>
-          <a class="social__link" href="#" aria-label="Fovey on Discord">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l-2 10H7z" /></svg>
-            Discord
-          </a>
-          <a class="social__link" href="#" aria-label="Fovey on GitHub">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-3 17c.5.1.7-.2.7-.5v-2c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.9-.7 1.7-1.1-2.2-.2-3.2-2-3.2-4 0-.9.3-1.6.8-2.3-.1-.2-.3-1.2.1-2.4 0 0 .7-.2 2.4.9.7-.2 1.4-.3 2.2-.3s1.5.1 2.2.3c1.7-1.1 2.4-.9 2.4-.9.4 1.2.2 2.2.1 2.4.5.6.8 1.4.8 2.3 0 2-1 3.8-3.2 4 .9.2 1.7.7 1.7 2v2.9c0 .3.2.6.7.5a9 9 0 0 0-3-17z" /></svg>
-            GitHub
-          </a>
-        </div>
-      </section>
     </main>
 
-    <footer class="footer">
-      <div class="footer__brand"><img src="/icon_color.svg" alt="" aria-hidden="true" />(c) 2025 Fovey</div>
-      <div class="footer__links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
+    <footer class="w-full py-8 text-center text-muted text-sm border-t border-border bg-surfaceAlt dark:bg-black/20">
+      <div class="flex items-center justify-center gap-6 mb-4">
+        <a href="#" class="hover:text-text transition-colors">Privacy</a>
+        <a href="#" class="hover:text-text transition-colors">Terms</a>
       </div>
-      <div class="footer__tagline">Built with focus.</div>
+      <p>&copy; 2026 Fovey Inc. All rights reserved.</p>
     </footer>
 
-    <script src="./alpha.js"></script>
+    <script type="module" src="./alpha.js"></script>
   </body>
 </html>

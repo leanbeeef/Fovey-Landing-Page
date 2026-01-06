@@ -3,7 +3,6 @@ export default {
   darkMode: ['selector', '[data-theme="dark"]'],
   content: [
     "./index.html",
-    "./alpha.html",
     "./alpha.js",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
@@ -27,6 +26,8 @@ export default {
       boxShadow: {
         shell: '0 10px 40px rgba(15,23,42,0.10)',
         focus: '0 0 0 3px rgba(13,110,253,0.25)',
+        elevated: 'var(--shadow-elevated)',
+        lift: 'var(--shadow-lift)',
       },
       spacing: {
         '1.5': '0.375rem',
