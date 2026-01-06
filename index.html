@@ -21,15 +21,16 @@
       document.documentElement.setAttribute('data-theme', savedTheme);
     </script>
   </head>
-  <body class="min-h-screen flex flex-col selection:bg-orange-500/30">
+  <body class="min-h-screen flex flex-col">
     
     <!-- Navbar -->
     <header class="w-full py-4 px-6 md:px-10 flex items-center justify-between sticky top-0 z-50 bg-app/80 backdrop-blur-xl border-b border-transparent dark:border-border/50 transition-all relative">
       <div class="flex items-center gap-3">
         <a href="#" aria-label="Fovey" class="flex items-center gap-2 group">
-          <img src="/fovey_color.svg" alt="Fovey" class="h-8 w-auto group-hover:rotate-12 transition-transform duration-500" />
+          <img src="/fovey_color.svg" alt="Fovey" class="h-8 w-auto group-hover:rotate-12 transition-transform duration-500 dark:hidden" />
+          <img src="/fovey_white.svg" alt="Fovey" class="h-8 w-auto group-hover:rotate-12 transition-transform duration-500 hidden dark:block" />
         </a>
-        <span class="text-xs font-medium bg-orange-500/10 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 border border-orange-500/20 dark:border-orange-500/30 rounded-full px-2.5 py-0.5">Alpha</span>
+        <span class="text-xs font-medium rounded-full px-2.5 py-0.5 alpha-badge">Alpha</span>
       </div>
 
       <!-- Centered Pill Nav -->
@@ -54,7 +55,7 @@
       <!-- Hero -->
       <section class="w-full text-center pt-20 pb-16 md:pt-32 md:pb-24">
         <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
-          Design is easy to start and <span class="text-orange-500">painful</span> to <span class="text-purple-500">finish.</span>
+          Design is easy to start and <span style="color: #FCAD1F;">painful</span> to <span style="color: #7647BE;">finish.</span>
         </h1>
         <p class="text-2xl md:text-3xl text-muted font-normal max-w-3xl mx-auto leading-relaxed mb-4">
           Fovey exists to fix the finish.
@@ -110,19 +111,19 @@
           <div class="section-content mt-6">
             <ul class="list-none space-y-4">
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">Structured brand handoff, not scattered files</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #7647BE;">•</span>
                 <span class="text-base md:text-lg text-text">Clear ownership of assets, not hidden dependencies</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">Review and packaging built into the design process</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #7647BE;">•</span>
                 <span class="text-base md:text-lg text-text">A path from canvas to client without chaos</span>
               </li>
             </ul>
@@ -151,35 +152,35 @@
           <div class="section-content">
             <ul class="list-none space-y-4 mb-6">
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">A fully functional vector canvas</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #7647BE;">•</span>
                 <span class="text-base md:text-lg text-text">Shapes, paths, text, and direct selection tools</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">Google Fonts integration with live previews</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #7647BE;">•</span>
                 <span class="text-base md:text-lg text-text">Asset uploading and reuse</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">Frames for organizing work and exports</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #7647BE;">•</span>
                 <span class="text-base md:text-lg text-text">SVG, PNG, and JPEG export</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">Brand-ready structure, not loose artboards</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #7647BE;">•</span>
                 <span class="text-base md:text-lg text-text">A fast local file system with no account required</span>
               </li>
             </ul>
@@ -226,19 +227,19 @@
           <div class="section-content">
             <ul class="list-none space-y-4">
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">Real usage, not just curiosity installs</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #7647BE;">•</span>
                 <span class="text-base md:text-lg text-text">Honest feedback, including when something feels wrong</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">Bug reports with context, not vibes</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #7647BE;">•</span>
                 <span class="text-base md:text-lg text-text">Willingness to tolerate rough edges</span>
               </li>
             </ul>
@@ -318,23 +319,23 @@
                 <h4 class="text-xl font-bold mb-4">Windows Instructions</h4>
                 <ol class="list-none space-y-3">
                   <li class="flex items-start gap-3">
-                    <span class="text-gradient-brand font-bold mt-1">1.</span>
+                    <span class="font-bold mt-1" style="color: #FCAD1F;">1.</span>
                     <span class="text-base text-text">Download the zip file</span>
                   </li>
                   <li class="flex items-start gap-3">
-                    <span class="text-gradient-brand font-bold mt-1">2.</span>
+                    <span class="font-bold mt-1" style="color: #7647BE;">2.</span>
                     <span class="text-base text-text">Right-click the zip and select "Extract All"</span>
                   </li>
                   <li class="flex items-start gap-3">
-                    <span class="text-gradient-brand font-bold mt-1">3.</span>
+                    <span class="font-bold mt-1" style="color: #FCAD1F;">3.</span>
                     <span class="text-base text-text">Open the extracted folder</span>
                   </li>
                   <li class="flex items-start gap-3">
-                    <span class="text-gradient-brand font-bold mt-1">4.</span>
+                    <span class="font-bold mt-1" style="color: #7647BE;">4.</span>
                     <span class="text-base text-text">Double-click the Fovey application</span>
                   </li>
                   <li class="flex items-start gap-3">
-                    <span class="text-gradient-brand font-bold mt-1">5.</span>
+                    <span class="font-bold mt-1" style="color: #FCAD1F;">5.</span>
                     <span class="text-base text-text">If Windows SmartScreen appears, click "More info" then "Run anyway"</span>
                   </li>
                 </ol>
@@ -348,23 +349,23 @@
                 <h4 class="text-xl font-bold mb-4">macOS Instructions</h4>
                 <ol class="list-none space-y-3">
                   <li class="flex items-start gap-3">
-                    <span class="text-gradient-brand font-bold mt-1">1.</span>
+                    <span class="font-bold mt-1" style="color: #FCAD1F;">1.</span>
                     <span class="text-base text-text">Download the zip file</span>
                   </li>
                   <li class="flex items-start gap-3">
-                    <span class="text-gradient-brand font-bold mt-1">2.</span>
+                    <span class="font-bold mt-1" style="color: #7647BE;">2.</span>
                     <span class="text-base text-text">Double-click to extract it</span>
                   </li>
                   <li class="flex items-start gap-3">
-                    <span class="text-gradient-brand font-bold mt-1">3.</span>
+                    <span class="font-bold mt-1" style="color: #FCAD1F;">3.</span>
                     <span class="text-base text-text">Drag the Fovey app into your Applications folder</span>
                   </li>
                   <li class="flex items-start gap-3">
-                    <span class="text-gradient-brand font-bold mt-1">4.</span>
+                    <span class="font-bold mt-1" style="color: #7647BE;">4.</span>
                     <span class="text-base text-text">Right-click the app and select "Open"</span>
                   </li>
                   <li class="flex items-start gap-3">
-                    <span class="text-gradient-brand font-bold mt-1">5.</span>
+                    <span class="font-bold mt-1" style="color: #FCAD1F;">5.</span>
                     <span class="text-base text-text">Confirm you want to open an unsigned application</span>
                   </li>
                 </ol>
@@ -387,15 +388,15 @@
             </p>
             <ul class="list-none space-y-4">
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">All assets you create or import remain yours.</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #7647BE;">•</span>
                 <span class="text-base md:text-lg text-text">Files are stored locally on your machine.</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">There is no account and no upload happening behind your back.</span>
               </li>
             </ul>
@@ -419,23 +420,23 @@
           <div class="section-content">
             <ul class="list-none space-y-4">
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">Brand review links</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #7647BE;">•</span>
                 <span class="text-base md:text-lg text-text">Structured brand packages</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">Collaboration and commenting</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-purple-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #7647BE;">•</span>
                 <span class="text-base md:text-lg text-text">Accounts and cloud sync</span>
               </li>
               <li class="flex items-start gap-4">
-                <span class="text-orange-500 font-bold text-xl mt-0.5">•</span>
+                <span class="font-bold text-xl mt-0.5" style="color: #FCAD1F;">•</span>
                 <span class="text-base md:text-lg text-text">Advanced layout and typography controls</span>
               </li>
             </ul>
